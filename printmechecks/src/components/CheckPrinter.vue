@@ -197,13 +197,13 @@ function saveToHistory () {
 function genNewCheck () {
     let checkList = JSON.parse(localStorage.getItem('checkList') || '[]')
     let recentCheck = checkList[checkList.length - 1]
-    let check = {}
+    let check: any = {}
     check.accountHolderName = recentCheck?.accountHolderName || 'John Smith'
     check.accountHolderAddress = recentCheck?.accountHolderAddress || '123 Cherry Tree Lane'
     check.accountHolderCity = recentCheck?.accountHolderCity || 'New York'
     check.accountHolderState = recentCheck?.accountHolderState || 'NY'
     check.accountHolderZip = recentCheck?.accountHolderZip || '10001'
-    check.checkNumber = recentCheck?.checkNumber ? (parseInt(recentCheck?.checkNumber) + 1) : '100'
+    check.checkNumber = recentCheck?.checkNumber ? (parseInt(recentCheck?.checkNumber) + 1).toString() : '100'
     check.date = new Date().toLocaleDateString()
     check.bankName = recentCheck?.bankName || 'Bank Name, INC'
     check.amount = '0.00'

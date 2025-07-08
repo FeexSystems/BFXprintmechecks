@@ -36,7 +36,7 @@
 <style>
 </style>
 
-<script setup>
+<script setup lang="ts">
 import {formatMoney} from '../utilities.ts'
 import { ref, onMounted} from 'vue'
 import { useAppStore } from '../stores/app.ts'
@@ -45,18 +45,18 @@ import { useRouter } from 'vue-router'
 const state = useAppStore()
 const router = useRouter()
 
-const history = ref([])
+const history = ref<any[]>([])
 
 const loadHistory = () => {
   history.value = JSON.parse(localStorage.getItem('checkList') || '[]')
 }
 
-const deleteItem = (index) => {
+const deleteItem = (index: number) => {
   history.value.splice(index, 1)
   localStorage.setItem('checkList', JSON.stringify(history.value))
 }
 
-const viewItem = (index) => {
+const viewItem = (index: number) => {
     const item = history.value[index]
     state.check = item
     router.push('/')
